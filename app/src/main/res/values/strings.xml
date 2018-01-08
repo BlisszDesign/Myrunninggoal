@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My running goal</string>
+    <string name="km">km</string>
+    <string name="min">min</string>
+    <string name="today">Today</string>
+    <string name="total">Total</string>
+    <string name="goal">Remaining kilometers</string>
+    <string name="button_km">5 km</string>
+    <string name="button_km2">10 km</string>
+    <string name="button_km3">20 km</string>
+    <string name="button_min">5 min</string>
+    <string name="button_min2">10 min</string>
+    <string name="button_min3">30 min</string>
+    <string name="button_reset_day">Reset day</string>
+    <string name="button_reset_all">Reset all</string>
+    <string name="toast_25">Keep up the hard work</string>
+    <string name="toast_50">Half way - well done</string>
+    <string name="toast_75">Almost there</string>
+    <string name="toast_95">Hard work always pays of</string>
+    <string name="toast">You are awesome</string>
+    <string name="toast_run">Run baby, run</string>
+</resources>
