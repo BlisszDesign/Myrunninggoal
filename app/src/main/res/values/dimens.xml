@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="marginLeft">10dp</dimen>
+    <dimen name="bigLeft">24dp</dimen>
+    <dimen name="bigMargin">20dp</dimen>
+    <dimen name="landMargin">100dp</dimen>
+</resources>

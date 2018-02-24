@@ -10,4 +10,28 @@
         <item name="android:textColorPrimary">@color/buttonTextColor</item>
     </style>
 
+    <style name="TextView">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">@font/robotoregular</item>
+    </style>
+
+    <style name="TextViewBig">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/ralewayregular</item>
+    </style>
+
+    <style name="TextViewSmall">
+        <item name="android:textColor">@color/textTitleColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/ralewayregular</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:background">@drawable/rounded_corner_button</item>
+        <item name="android:textColor">@color/buttonTextColor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/robotoregular</item>
+    </style>
 </resources>

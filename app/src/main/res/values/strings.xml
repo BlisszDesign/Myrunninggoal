@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My running goal</string>
+    <string name="zero">0</string>
+    <string name="hundert">100</string>
     <string name="km">km</string>
     <string name="min">min</string>
     <string name="today">Today</string>
