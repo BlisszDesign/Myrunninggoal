@@ -179,33 +179,36 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/five_km"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addFiveKm"
+                    android:onClick="onSubmit"
                     android:text="@string/button_km" />
 
                 <Button
+                    android:id="@+id/ten_km"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addTenKm"
+                    android:onClick="onSubmit"
                     android:text="@string/button_km2" />
 
                 <Button
+                    android:id="@+id/twenty_km"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addTwentyKm"
+                    android:onClick="onSubmit"
                     android:text="@string/button_km3" />
             </LinearLayout>
 
@@ -216,33 +219,36 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/five_min"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addFiveMin"
+                    android:onClick="onSubmit"
                     android:text="@string/button_min" />
 
                 <Button
+                    android:id="@+id/ten_min"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addTenMin"
+                    android:onClick="onSubmit"
                     android:text="@string/button_min2" />
 
                 <Button
+                    android:id="@+id/thirty_min"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/marginLeft"
                     android:layout_marginLeft="@dimen/bigLeft"
                     android:layout_marginRight="@dimen/bigLeft"
-                    android:onClick="addThirtyMin"
+                    android:onClick="onSubmit"
                     android:text="@string/button_min3" />
             </LinearLayout>
 
@@ -256,7 +262,7 @@
             android:layout_marginBottom="@dimen/marginLeft"
             android:layout_marginLeft="@dimen/bigLeft"
             android:layout_marginRight="@dimen/bigLeft"
-            android:onClick="resetAll"
+            android:onClick="onSubmit"
             android:text="@string/button_reset_all" />
     </LinearLayout>
 </ScrollView>

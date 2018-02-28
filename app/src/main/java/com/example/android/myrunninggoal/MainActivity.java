@@ -6,20 +6,25 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    int totalKm = 0;
-    int totalMin = 0;
-    int progress, todayKm, todayMin;
-    int goal = 100;
-    TextView progressView, kmView, minView, totalKmView, totalMinView;
-    static final String STATE_KM = "totalKm";
-    static final String STATE_MIN = "totalMin";
-    static final String STATE_PROGRESS = "progress";
-    static final String STATE_TODAY_KM = "todayKm";
-    static final String STATE_TODAY_MIN = "todayMin";
+    private int totalKm = 0;
+    private int totalMin = 0;
+    private int progress;
+    private int todayKm;
+    private int todayMin;
+    private int goal = 100;
+    private TextView progressView;
+    private TextView kmView;
+    private TextView minView;
+    private TextView totalKmView;
+    private TextView totalMinView;
+    public static final String STATE_KM = "totalKm";
+    public static final String STATE_MIN = "totalMin";
+    public static final String STATE_PROGRESS = "progress";
+    public static final String STATE_TODAY_KM = "todayKm";
+    public static final String STATE_TODAY_MIN = "todayMin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,129 +56,97 @@ public class MainActivity extends AppCompatActivity {
         progress = savedInstanceState.getInt(STATE_PROGRESS);
         todayKm = savedInstanceState.getInt(STATE_TODAY_KM);
         todayMin = savedInstanceState.getInt(STATE_TODAY_MIN);
-        displayTotalKm(totalKm);
-        displayTotalMin(totalMin);
-        displayTodayKm(todayKm);
-        displayTodayMin(todayMin);
-        displayProgress(progress);
+        updateCounter(kmView, todayKm); // display
+        updateCounter(totalKmView, totalKm);
+        updateCounter(progressView, progress);
+        updateCounter(minView, todayMin); // display
+        updateCounter(totalMinView, totalMin);
     }
 
-    //reset summary
-    public void resetAll(View view) {
-        totalKm = 0;
-        totalMin = 0;
-        progress = 100;
-        todayMin = 0;
-        todayKm = 0;
-        displayTotalKm(totalKm);
-        displayTotalMin(totalMin);
-        displayProgress(progress);
-        displayTodayKm(todayKm);
-        displayTodayMin(todayMin);
-        Toast.makeText(this, getString(R.string.toast_run), Toast.LENGTH_SHORT).show();
+    public static void updateCounter(TextView textView, int score) {
+        textView.setText(String.valueOf(score));
     }
 
-    //set today km
-    public void addFiveKm(View view) {
-        todayKm = 5;
-        totalKm += todayKm;
-        progress = goal - totalKm;
-        if (progress < 0) {
-            return;
-        }
-        displayTodayKm(todayKm);
-        displayTotalKm(totalKm);
-        displayProgress(progress);
-    }
-
-    public void addTenKm(View view) {
-        todayKm = 10;
-        totalKm += todayKm;
-        progress = goal - totalKm;
-        if (progress < 0) {
-            return;
-        }
-        displayTodayKm(todayKm);
-        displayTotalKm(totalKm);
-        displayProgress(progress);
-    }
-
-    public void addTwentyKm(View view) {
-        todayKm = 20;
-        totalKm += todayKm;
-        progress = goal - totalKm;
-        if (progress < 0) {
-            return;
-        }
-        displayTodayKm(todayKm);
-        displayTotalKm(totalKm);
-        displayProgress(progress);
-    }
-
-    //    set today minutes
-    public void addFiveMin(View view) {
-        todayMin = 5;
-        totalMin += todayMin;
-        displayTotalMin(totalMin);
-        displayTodayMin(todayMin);
-    }
-
-    public void addTenMin(View view) {
-        todayMin = 10;
-        totalMin += todayMin;
-        displayTotalMin(totalMin);
-        displayTodayMin(todayMin);
-    }
-
-    public void addThirtyMin(View view) {
-        todayMin = 30;
-        totalMin += todayMin;
-        displayTotalMin(totalMin);
-        displayTodayMin(todayMin);
-    }
-
-
-    //display today running km
-    public void displayTodayKm(int km) {
-        kmView.setText(String.valueOf(km));
-    }
-
-    //    display today running minutes
-    public void displayTodayMin(int min) {
-        minView.setText(String.valueOf(min));
-    }
-
-    //    display total running km
-    public void displayTotalKm(int km) {
-        totalKmView.setText(String.valueOf(km));
-    }
-
-    //    display total running minutes
-    public void displayTotalMin(int min) {
-        totalMinView.setText(String.valueOf(min));
-    }
-
-    public void displayProgress(int goalProgress) {
+    public void updateProgress(int goalProgress) {
         progressView.setText("" + goalProgress);
-        if (goalProgress <= 25 && goalProgress > 0) {
-            Toast.makeText(this, getString(R.string.toast_75), Toast.LENGTH_SHORT).show();
-            return;
-        } else if (goalProgress == 50) {
-            Toast.makeText(this, getString(R.string.toast_50), Toast.LENGTH_SHORT).show();
-            return;
-        } else if (goalProgress <= 75 && goalProgress > 50) {
-            Toast.makeText(this, getString(R.string.toast_25), Toast.LENGTH_SHORT).show();
-            return;
-        } else if (totalKm == 100) {
-            Toast.makeText(this, getString(R.string.toast), Toast.LENGTH_SHORT).show();
-            return;
-        } else if (goalProgress < 100 && goalProgress >= 5) {
-            Toast.makeText(this, getString(R.string.toast_95), Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            Toast.makeText(this, getString(R.string.toast_run), Toast.LENGTH_SHORT).show();
-            return;
+        switch (goalProgress) {
+            case 25:
+                Toast.makeText(this, getString(R.string.toast_75), Toast.LENGTH_SHORT).show();
+                break;
+            case 50:
+                Toast.makeText(this, getString(R.string.toast_50), Toast.LENGTH_SHORT).show();
+                break;
+            case 75:
+                Toast.makeText(this, getString(R.string.toast_25), Toast.LENGTH_SHORT).show();
+                break;
+            case 0:
+                Toast.makeText(this, getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(this, getString(R.string.toast_95), Toast.LENGTH_SHORT).show();
         }
     }
 
+    public void onSubmit(View view) {
+        switch (view.getId()) {
+            case R.id.five_km:
+                todayKm = 5;
+                totalKm += todayKm;
+                progress = goal - totalKm;
+                if (progress < 0) {
+                    return;
+                }
+                updateCounter(kmView, todayKm); // display
+                updateCounter(totalKmView, totalKm);
+                updateProgress(progress);
+                break;
+            case R.id.ten_km:
+                todayKm = 10;
+                totalKm += todayKm;
+                progress = goal - totalKm;
+                updateCounter(kmView, todayKm); // display
+                updateCounter(totalKmView, totalKm);
+                updateProgress(progress);
+                break;
+            case R.id.twenty_km:
+                todayKm = 20;
+                totalKm += todayKm;
+                progress = goal - totalKm;
+                updateCounter(kmView, todayKm); // display
+                updateCounter(totalKmView, totalKm);
+                updateProgress(progress);
+                break;
+            case R.id.five_min:
+                todayMin = 5;
+                totalMin += todayMin;
+                updateCounter(minView, todayMin); // display
+                updateCounter(totalMinView, totalMin);
+                break;
+            case R.id.ten_min:
+                todayMin = 10;
+                totalMin += todayMin;
+                updateCounter(minView, todayMin); // display
+                updateCounter(totalMinView, totalMin);
+                break;
+            case R.id.thirty_min:
+                todayMin = 30;
+                totalMin += todayMin;
+                updateCounter(minView, todayMin); // display
+                updateCounter(totalMinView, totalMin);
+                break;
+            case R.id.reset_all:
+                totalKm = 0;
+                totalMin = 0;
+                progress = 100;
+                todayMin = 0;
+                todayKm = 0;
+                updateCounter(kmView, todayKm); // display
+                updateCounter(totalKmView, totalKm);
+                updateCounter(progressView, progress);
+                updateCounter(minView, todayMin); // display
+                updateCounter(totalMinView, totalMin);
+                Toast.makeText(this, getString(R.string.toast_run), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
